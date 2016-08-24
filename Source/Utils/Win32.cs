@@ -33,6 +33,7 @@ namespace TheCodeKing.ActiveButtons.Utils
         /// 	The current Verison of windows.
         /// </summary>
         public static int version = Environment.OSVersion.Version.Major;
+        public static int versionMinor = Environment.OSVersion.Version.Minor;
 
         /// <summary>
         /// 	Returns true when aero glass is enabled
