@@ -79,6 +79,7 @@
     <Compile Include="Controls\SpillOverMode.cs" />
     <Compile Include="Controls\ThemedItem.cs" />
     <Compile Include="Controls\Themes\Aero.cs" />
+    <Compile Include="Controls\Themes\Windows8.cs" />
     <Compile Include="Controls\Themes\XPStyle.cs" />
     <Compile Include="Controls\Themes\ITheme.cs" />
     <Compile Include="Controls\Themes\Standard.cs" />
@@ -119,6 +120,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ActiveButton.resx">
+      <DependentUpon>ActiveButton.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -133,7 +139,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Output="C:\Users\Mike\Subversion\TitleButtons\trunk\source\Lib\ActiveButtons.dll" Reactor_Project="C:\Users\Mike\Subversion\TitleButtons\trunk\source\ActiveButtons\lock.nrproj" Reactor_Commands="" Reactor_Automatic="0" Reactor_Lib="1" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Lib="1" Reactor_Automatic="0" Reactor_Commands="" Reactor_Project="C:\Users\Mike\Subversion\TitleButtons\trunk\source\ActiveButtons\lock.nrproj" Reactor_Output="C:\Users\Mike\Subversion\TitleButtons\trunk\source\Lib\ActiveButtons.dll" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -17,63 +17,51 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TheCodeKing.ActiveButtons.Utils
-{
-    internal class ListModificationEventArgs : ListRangeEventArgs
-    {
+namespace TheCodeKing.ActiveButtons.Utils {
+    internal class ListModificationEventArgs : ListRangeEventArgs {
         private readonly ListModification modification;
 
         public ListModificationEventArgs(ListModification modification, int startIndex, int count)
-            : base(startIndex, count)
-        {
+            : base(startIndex, count) {
             this.modification = modification;
         }
 
-        public ListModification Modification
-        {
+        public ListModification Modification {
             get { return modification; }
         }
     }
 
-    internal class ListItemEventArgs : EventArgs
-    {
+    internal class ListItemEventArgs : EventArgs {
         private readonly int itemIndex;
 
-        public ListItemEventArgs(int itemIndex)
-        {
+        public ListItemEventArgs(int itemIndex) {
             this.itemIndex = itemIndex;
         }
 
-        public int ItemIndex
-        {
+        public int ItemIndex {
             get { return itemIndex; }
         }
     }
 
-    internal class ListRangeEventArgs : EventArgs
-    {
+    internal class ListRangeEventArgs : EventArgs {
         private readonly int count;
         private readonly int startIndex;
 
-        public ListRangeEventArgs(int startIndex, int count)
-        {
+        public ListRangeEventArgs(int startIndex, int count) {
             this.startIndex = startIndex;
             this.count = count;
         }
 
-        public int StartIndex
-        {
+        public int StartIndex {
             get { return startIndex; }
         }
 
-        public int Count
-        {
+        public int Count {
             get { return count; }
         }
     }
 
-    internal enum ListModification
-    {
+    internal enum ListModification {
         /// <summary>
         /// 	The list has been cleared.
         /// </summary>
@@ -101,42 +89,34 @@ namespace TheCodeKing.ActiveButtons.Utils
     }
 
     [Serializable]
-    internal class ListWithEvents<T> : List<T>, IList<T>, IList
-    {
+    internal class ListWithEvents<T> : List<T>, IList<T>, IList {
         private readonly object syncRoot = new object();
         private bool suppressEvents;
 
-        public ListWithEvents()
-        {
+        public ListWithEvents() {
         }
 
         public ListWithEvents(IEnumerable<T> collection)
-            : base(collection)
-        {
+            : base(collection) {
         }
 
         public ListWithEvents(int capacity)
-            : base(capacity)
-        {
+            : base(capacity) {
         }
 
-        protected bool EventsSuppressed
-        {
+        protected bool EventsSuppressed {
             get { return suppressEvents; }
         }
 
         #region IList Members
 
-        public object SyncRoot
-        {
+        public object SyncRoot {
             get { return syncRoot; }
         }
 
-        int IList.Add(object value)
-        {
-            if (value is T)
-            {
-                Add((T) value);
+        int IList.Add(object value) {
+            if (value is T) {
+                Add((T)value);
                 return Count - 1;
             }
             return -1;
@@ -146,25 +126,18 @@ namespace TheCodeKing.ActiveButtons.Utils
 
         #region IList<T> Members
 
-        public new virtual T this[int index]
-        {
+        public new virtual T this[int index] {
             get { return base[index]; }
-            set
-            {
-                lock (syncRoot)
-                {
+            set {
+                lock (syncRoot) {
                     bool equal = false;
-                    if (base[index] != null)
-                    {
+                    if (base[index] != null) {
                         equal = base[index].Equals(value);
-                    }
-                    else if (base[index] == null && value == null)
-                    {
+                    } else if (base[index] == null && value == null) {
                         equal = true;
                     }
 
-                    if (!equal)
-                    {
+                    if (!equal) {
                         base[index] = value;
                         OnItemModified(new ListItemEventArgs(index));
                     }
@@ -172,57 +145,46 @@ namespace TheCodeKing.ActiveButtons.Utils
             }
         }
 
-        public new virtual void Add(T item)
-        {
+        public new virtual void Add(T item) {
             int count;
-            lock (syncRoot)
-            {
+            lock (syncRoot) {
                 base.Add(item);
                 count = base.Count - 1;
             }
             OnItemAdded(new ListItemEventArgs(count));
         }
 
-        public new virtual void Clear()
-        {
-            lock (syncRoot)
-            {
+        public new virtual void Clear() {
+            lock (syncRoot) {
                 base.Clear();
             }
             OnCleared(EventArgs.Empty);
         }
 
-        public new virtual void Insert(int index, T item)
-        {
-            lock (syncRoot)
-            {
+        public new virtual void Insert(int index, T item) {
+            lock (syncRoot) {
                 base.Insert(index, item);
             }
             OnItemAdded(new ListItemEventArgs(index));
         }
 
-        public new virtual bool Remove(T item)
-        {
+        public new virtual bool Remove(T item) {
             bool result;
 
-            lock (syncRoot)
-            {
+            lock (syncRoot) {
                 result = base.Remove(item);
             }
 
             // raise the event only if the removal was successful
-            if (result)
-            {
+            if (result) {
                 OnItemRemoved(EventArgs.Empty);
             }
 
             return result;
         }
 
-        public new virtual void RemoveAt(int index)
-        {
-            lock (syncRoot)
-            {
+        public new virtual void RemoveAt(int index) {
+            lock (syncRoot) {
                 base.RemoveAt(index);
             }
             OnItemRemoved(EventArgs.Empty);
@@ -244,37 +206,30 @@ namespace TheCodeKing.ActiveButtons.Utils
 
         public event EventHandler RangeRemoved;
 
-        public new virtual void AddRange(IEnumerable<T> collection)
-        {
-            lock (syncRoot)
-            {
+        public new virtual void AddRange(IEnumerable<T> collection) {
+            lock (syncRoot) {
                 InsertRange(base.Count, collection);
             }
         }
 
-        public new virtual void InsertRange(int index, IEnumerable<T> collection)
-        {
+        public new virtual void InsertRange(int index, IEnumerable<T> collection) {
             int count;
-            lock (syncRoot)
-            {
+            lock (syncRoot) {
                 base.InsertRange(index, collection);
                 count = base.Count - index;
             }
             OnRangeAdded(new ListRangeEventArgs(index, count));
         }
 
-        public new virtual int RemoveAll(Predicate<T> match)
-        {
+        public new virtual int RemoveAll(Predicate<T> match) {
             int count;
 
-            lock (syncRoot)
-            {
+            lock (syncRoot) {
                 count = base.RemoveAll(match);
             }
 
             // raise the event only if the removal was successful
-            if (count > 0)
-            {
+            if (count > 0) {
                 OnRangeRemoved(EventArgs.Empty);
             }
 
@@ -287,138 +242,110 @@ namespace TheCodeKing.ActiveButtons.Utils
         /// <remarks>
         /// 	This operation is thread-safe.
         /// </remarks>
-        public new virtual void RemoveRange(int index, int count)
-        {
+        public new virtual void RemoveRange(int index, int count) {
             int listCountOld, listCountNew;
-            lock (syncRoot)
-            {
+            lock (syncRoot) {
                 listCountOld = base.Count;
                 base.RemoveRange(index, count);
                 listCountNew = base.Count;
             }
 
             // raise the event only if the removal was successful
-            if (listCountOld != listCountNew)
-            {
+            if (listCountOld != listCountNew) {
                 OnRangeRemoved(EventArgs.Empty);
             }
         }
 
-        public virtual void RemoveRange(List<T> collection)
-        {
-            for (int i = 0; i < collection.Count; i++)
-            {
+        public virtual void RemoveRange(List<T> collection) {
+            for (int i = 0; i < collection.Count; i++) {
                 Remove(collection[i]);
             }
         }
 
-        public void SuppressEvents()
-        {
+        public void SuppressEvents() {
             suppressEvents = true;
         }
 
-        public void ResumeEvents()
-        {
+        public void ResumeEvents() {
             suppressEvents = false;
         }
 
-        protected virtual void OnCleared(EventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnCleared(EventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (Cleared != null)
-            {
+            if (Cleared != null) {
                 Cleared(this, e);
             }
 
             OnCollectionModified(new ListModificationEventArgs(ListModification.Cleared, -1, -1));
         }
 
-        protected virtual void OnCollectionModified(ListModificationEventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnCollectionModified(ListModificationEventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (CollectionModified != null)
-            {
+            if (CollectionModified != null) {
                 CollectionModified(this, e);
             }
         }
 
-        protected virtual void OnItemAdded(ListItemEventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnItemAdded(ListItemEventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (ItemAdded != null)
-            {
+            if (ItemAdded != null) {
                 ItemAdded(this, e);
             }
 
             OnCollectionModified(new ListModificationEventArgs(ListModification.ItemAdded, e.ItemIndex, 1));
         }
 
-        protected virtual void OnItemModified(ListItemEventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnItemModified(ListItemEventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (ItemModified != null)
-            {
+            if (ItemModified != null) {
                 ItemModified(this, e);
             }
 
             OnCollectionModified(new ListModificationEventArgs(ListModification.ItemModified, e.ItemIndex, 1));
         }
 
-        protected virtual void OnItemRemoved(EventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnItemRemoved(EventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (ItemRemoved != null)
-            {
+            if (ItemRemoved != null) {
                 ItemRemoved(this, e);
             }
 
             OnCollectionModified(new ListModificationEventArgs(ListModification.ItemRemoved, -1, 1));
         }
 
-        protected virtual void OnRangeAdded(ListRangeEventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnRangeAdded(ListRangeEventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (RangeAdded != null)
-            {
+            if (RangeAdded != null) {
                 RangeAdded(this, e);
             }
 
             OnCollectionModified(new ListModificationEventArgs(ListModification.RangeAdded, e.StartIndex, e.Count));
         }
 
-        protected virtual void OnRangeRemoved(EventArgs e)
-        {
-            if (suppressEvents)
-            {
+        protected virtual void OnRangeRemoved(EventArgs e) {
+            if (suppressEvents) {
                 return;
             }
 
-            if (RangeRemoved != null)
-            {
+            if (RangeRemoved != null) {
                 RangeRemoved(this, e);
             }
 

@@ -49,9 +49,9 @@ namespace TheCodeKing.ActiveDemo
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(233, 21);
+            this.addButton.Location = new System.Drawing.Point(146, 55);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(63, 23);
+            this.addButton.Size = new System.Drawing.Size(98, 23);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -61,7 +61,7 @@ namespace TheCodeKing.ActiveDemo
             // 
             this.buttonText.Location = new System.Drawing.Point(52, 23);
             this.buttonText.Name = "buttonText";
-            this.buttonText.Size = new System.Drawing.Size(175, 20);
+            this.buttonText.Size = new System.Drawing.Size(192, 20);
             this.buttonText.TabIndex = 2;
             // 
             // colorPickerBtn
@@ -77,9 +77,9 @@ namespace TheCodeKing.ActiveDemo
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(233, 49);
+            this.button1.Location = new System.Drawing.Point(52, 55);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 23);
+            this.button1.Size = new System.Drawing.Size(87, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "Remove";
             this.button1.UseVisualStyleBackColor = true;
@@ -99,14 +99,14 @@ namespace TheCodeKing.ActiveDemo
             // 
             this.colorSwitch.Location = new System.Drawing.Point(52, 44);
             this.colorSwitch.Name = "colorSwitch";
-            this.colorSwitch.Size = new System.Drawing.Size(175, 5);
+            this.colorSwitch.Size = new System.Drawing.Size(192, 5);
             this.colorSwitch.TabIndex = 6;
             // 
             // ActiveDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 150);
+            this.ClientSize = new System.Drawing.Size(748, 438);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.colorPickerBtn);
@@ -133,6 +133,5 @@ namespace TheCodeKing.ActiveDemo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Panel colorSwitch;
-
     }
 }

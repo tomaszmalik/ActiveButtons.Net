@@ -15,13 +15,10 @@
 */
 using System.Windows.Forms;
 
-namespace TheCodeKing.ActiveButtons.Controls.Themes
-{
-    internal class Standard : ThemeBase
-    {
+namespace TheCodeKing.ActiveButtons.Controls.Themes {
+    internal class Standard : ThemeBase {
         public Standard(Form form)
-            : base(form)
-        {
+            : base(form) {
         }
     }
 }

@@ -13,14 +13,12 @@
 *		01/09/2007	Michael Carlisle				Version 1.0
 *=============================================================================
 */
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	Determines the behaviour of the <see cref = "T:ActiveButton"></see> 
     /// 	items when they spill over the edge of the title bar.
     /// </summary>
-    internal enum SpillOverMode
-    {
+    internal enum SpillOverMode {
         /// <summary>
         /// 	Hide <see cref = "T:ActiveButton"></see> instances.
         /// </summary>

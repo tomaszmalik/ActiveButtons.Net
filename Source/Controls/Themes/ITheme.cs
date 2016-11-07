@@ -15,10 +15,8 @@
 */
 using System.Drawing;
 
-namespace TheCodeKing.ActiveButtons.Controls.Themes
-{
-    internal interface ITheme
-    {
+namespace TheCodeKing.ActiveButtons.Controls.Themes {
+    internal interface ITheme {
         bool IsDisplayed { get; }
 
         Color BackColor { get; }
@@ -30,5 +28,9 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes
         Size FrameBorder { get; }
 
         Size SystemButtonSize { get; }
+
+        bool ForceFlat { get; }
+
+        bool Maximized { get; set; }
     }
 }

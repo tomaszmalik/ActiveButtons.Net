@@ -15,12 +15,10 @@
 */
 using System.Collections.Generic;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	A list of buttons to be rendered in the ActiveButton's menu.
     /// </summary>
-    public interface IActiveItems : IList<IActiveItem>
-    {
+    public interface IActiveItems : IList<IActiveItem> {
     }
 }

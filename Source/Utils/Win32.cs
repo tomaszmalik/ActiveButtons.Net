@@ -16,13 +16,11 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace TheCodeKing.ActiveButtons.Utils
-{
+namespace TheCodeKing.ActiveButtons.Utils {
     /// <summary>
     /// 	The native Win32 APIs used by the library.
     /// </summary>
-    internal class Win32
-    {
+    internal class Win32 {
         public const uint WS_CHILD = 0x40000000;
         public const uint WS_EX_LAYERED = 0x00080000;
         public const uint WS_CLIPSIBLINGS = 0x4000000;
@@ -39,17 +37,12 @@ namespace TheCodeKing.ActiveButtons.Utils
         /// 	Returns true when aero glass is enabled
         /// </summary>
         /// <returns></returns>
-        public static bool DwmIsCompositionEnabled
-        {
-            get
-            {
+        public static bool DwmIsCompositionEnabled {
+            get {
                 // return ture if Windows supports aero and it's enabled.
-                if (version >= 6)
-                {
+                if (version >= 6) {
                     return DwmIsCompositionEnabled32();
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             }

@@ -13,13 +13,11 @@
 *		01/09/2007	Michael Carlisle				Version 1.0
 *=============================================================================
 */
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	Defines an ActiveMenu item.
     /// </summary>
-    public interface IActiveItem
-    {
+    public interface IActiveItem {
         /// <summary>
         /// 	Gets the height of the control.
         /// </summary>

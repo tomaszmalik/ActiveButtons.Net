@@ -15,8 +15,7 @@
 */
 using System.Windows.Forms;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	Provides access to the <see cref = "T:ActiveButton"></see> instances
     /// 	attached to the menu instance.
@@ -41,8 +40,7 @@ namespace TheCodeKing.ActiveButtons.Controls
     /// 		menu.RemoveAt(2);
     /// 	</code>
     /// </example>
-    public interface IActiveMenu
-    {
+    public interface IActiveMenu {
         /// <summary>
         /// 	Gets the list of <see cref = "T:ActiveButton"></see> instances
         /// 	associated with the current menu instances.
