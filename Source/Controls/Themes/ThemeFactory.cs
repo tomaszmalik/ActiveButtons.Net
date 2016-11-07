@@ -1,4 +1,5 @@
 /*=============================================================================
+/*=============================================================================
 *
 *	(C) Copyright 2011, Michael Carlisle (mike.carlisle@thecodeking.co.uk)
 *
@@ -16,41 +17,28 @@
 using System.Windows.Forms;
 using TheCodeKing.ActiveButtons.Utils;
 
-namespace TheCodeKing.ActiveButtons.Controls.Themes
-{
-    internal class ThemeFactory
-    {
+namespace TheCodeKing.ActiveButtons.Controls.Themes {
+    internal class ThemeFactory {
         private readonly Form form;
 
-        public ThemeFactory(Form form)
-        {
+        public ThemeFactory(Form form) {
             this.form = form;
         }
 
-        public ITheme GetTheme()
-        {
-            if (Win32.DwmIsCompositionEnabled && (Win32.version == 6 && Win32.versionMinor == 2))
-            {
+        public ITheme GetTheme() {
+            if (Win32.DwmIsCompositionEnabled && (Win32.version == 6 && Win32.versionMinor == 2)) {
                 // vista
                 return new Windows8(form);
-            }
-            else if (Win32.DwmIsCompositionEnabled)
-            {
+            } else if (Win32.DwmIsCompositionEnabled) {
                 // vista
                 return new Aero(form);
-            }
-            else if (Application.RenderWithVisualStyles && Win32.version > 6)
-            {
+            } else if (Application.RenderWithVisualStyles && Win32.version > 6) {
                 // vista basic
                 return new Styled(form);
-            }
-            else if (Application.RenderWithVisualStyles)
-            {
+            } else if (Application.RenderWithVisualStyles) {
                 // xp
                 return new XPStyle(form);
-            }
-            else
-            {
+            } else {
                 return new Standard(form);
             }
         }

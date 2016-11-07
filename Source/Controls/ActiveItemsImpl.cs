@@ -15,13 +15,11 @@
 */
 using TheCodeKing.ActiveButtons.Utils;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	The implementation of ActiveItems used to store a list of buttons in 
     /// 	the ActiveMenu.
     /// </summary>
-    internal class ActiveItemsImpl : ListWithEvents<IActiveItem>, IActiveItems
-    {
+    internal class ActiveItemsImpl : ListWithEvents<IActiveItem>, IActiveItems {
     }
 }

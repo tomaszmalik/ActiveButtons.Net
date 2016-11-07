@@ -15,15 +15,13 @@
 */
 using TheCodeKing.ActiveButtons.Controls.Themes;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	Internal interface used to set properties of the ActiveItem
     /// 	instances, and expose the current instance of ITheme. This allows
     /// 	buttons to be correctly positioned with the menu.
     /// </summary>
-    internal interface ThemedItem
-    {
+    internal interface ThemedItem {
         /// <summary>
         /// 	Gets or sets the theme.
         /// </summary>

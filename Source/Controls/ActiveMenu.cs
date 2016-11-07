@@ -15,8 +15,7 @@
 */
 using System.Windows.Forms;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	The ActiveMenu class used to create concrete instances of the 
     /// 	<see cref = "T:IActiveMenu"></see> instance.
@@ -38,13 +37,11 @@ namespace TheCodeKing.ActiveButtons.Controls
     /// 		menu.Items.Add(button);
     /// 	</code>
     /// </example>
-    public static class ActiveMenu
-    {
+    public static class ActiveMenu {
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form)
-        {
+        public static IActiveMenu GetInstance(Form form) {
             return ActiveMenuImpl.GetInstance(form);
         }
     }

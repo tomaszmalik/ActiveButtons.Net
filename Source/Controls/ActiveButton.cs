@@ -19,8 +19,7 @@ using System.Windows.Forms;
 using TheCodeKing.ActiveButtons.Controls.Themes;
 using TheCodeKing.ActiveButtons.Utils;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	An instance of a button which can be added to the
     /// 	ActiveButtons menu.
@@ -48,8 +47,7 @@ namespace TheCodeKing.ActiveButtons.Controls
     /// 		menu.Items.Add(button);
     /// 	</code>
     /// </example>
-    public class ActiveButton : Button, IActiveItem, ThemedItem
-    {
+    public class ActiveButton : Button, IActiveItem, ThemedItem {
         private Size buttonSize;
         private int buttonX;
         private int buttonY;
@@ -63,11 +61,9 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Gets or sets the theme.
         /// </summary>
         /// <value>The theme.</value>
-        ITheme ThemedItem.Theme
-        {
+        ITheme ThemedItem.Theme {
             get { return theme; }
-            set
-            {
+            set {
                 theme = value;
                 CalcButtonSize();
             }
@@ -79,8 +75,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>An <see cref = "T:System.Int32"></see> representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        int ThemedItem.Top
-        {
+        int ThemedItem.Top {
             get { return base.Top; }
             set { base.Top = value; }
         }
@@ -91,8 +86,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>An <see cref = "T:System.Int32"></see> representing the distance, in pixels, between the left edge of the control and the left edge of its container's client area.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        int ThemedItem.Left
-        {
+        int ThemedItem.Left {
             get { return base.Left; }
             set { base.Left = value; }
         }
@@ -102,8 +96,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Initializes a new instance of the <see cref = "ActiveButton" /> class.
         /// </summary>
-        public ActiveButton()
-        {
+        public ActiveButton() {
             Initialize();
         }
 
@@ -111,11 +104,9 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Gets or sets the text property of the button control.
         /// </summary>
         /// <value>The text.</value>
-        public new string Text
-        {
+        public new string Text {
             get { return text; }
-            set
-            {
+            set {
                 text = value;
                 CalcButtonSize();
             }
@@ -126,8 +117,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <value></value>
         /// <returns>A <see cref = "T:System.Drawing.Color"></see> value representing the background color.</returns>
-        public new Color BackColor
-        {
+        public new Color BackColor {
             get { return base.BackColor; }
             set { base.BackColor = value; }
         }
@@ -140,8 +130,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>An <see cref = "T:System.Int32"></see> representing the distance, in pixels, between the bottom edge of the control and the top edge of its container's client area.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        public new int Top
-        {
+        public new int Top {
             get { return base.Top; }
         }
 
@@ -151,8 +140,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>An <see cref = "T:System.Int32"></see> representing the distance, in pixels, between the left edge of the control and the left edge of its container's client area.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        public new int Left
-        {
+        public new int Left {
             get { return base.Left; }
         }
 
@@ -162,8 +150,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>The width of the control in pixels.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        public new int Width
-        {
+        public new int Width {
             get { return base.Width; }
         }
 
@@ -173,8 +160,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <value></value>
         /// <returns>The height of the control in pixels.</returns>
         /// <PermissionSet><IPermission class = "System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /><IPermission class = "System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Flags = "UnmanagedCode, ControlEvidence" /><IPermission class = "System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version = "1" Unrestricted = "true" /></PermissionSet>
-        public new int Height
-        {
+        public new int Height {
             get { return base.Height; }
         }
 
@@ -183,14 +169,12 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Initializes this instance.
         /// </summary>
-        protected void Initialize()
-        {
-            if (Win32.DwmIsCompositionEnabled || Application.RenderWithVisualStyles)
-            {
+        protected void Initialize() {
+            InitializeComponent();
+
+            if (Win32.DwmIsCompositionEnabled || Application.RenderWithVisualStyles) {
                 base.BackColor = Color.Transparent;
-            }
-            else
-            {
+            } else {
                 base.BackColor = Color.FromKnownColor(KnownColor.Control);
             }
             Font = new Font(base.Font.FontFamily, 7.5F, FontStyle.Regular);
@@ -206,43 +190,40 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <param name = "sender">The source of the event.</param>
         /// <param name = "e">The <see cref = "System.EventArgs" /> instance containing the event data.</param>
-        private void ActiveButton_SystemColorsChanged(object sender, EventArgs e)
-        {
+        private void ActiveButton_SystemColorsChanged(object sender, EventArgs e) {
             CalcButtonSize();
         }
 
         /// <summary>
         /// 	Calculates the size of the button.
         /// </summary>
-        private void CalcButtonSize()
-        {
-            if (theme != null)
-            {
+        private void CalcButtonSize() {
+            if (theme != null) {
                 buttonSize = theme.SystemButtonSize;
-                if (BackColor == Color.Empty)
-                {
+                if (BackColor == Color.Empty) {
                     BackColor = theme.BackColor;
                 }
-            }
-            else
-            {
+
+                if (theme.ForceFlat) {
+                    base.FlatStyle = FlatStyle.Flat;
+                    base.FlatAppearance.BorderSize = 0;
+                }
+            } else {
                 buttonSize = SystemInformation.CaptionButtonSize;
             }
 
             base.Width = buttonSize.Width;
             base.Height = buttonSize.Height;
 
-            using (Graphics e = Graphics.FromHwnd(Handle))
-            {
+            using (Graphics e = Graphics.FromHwnd(Handle)) {
                 textSize = e.MeasureString(Text, Font).ToSize();
             }
-            if (base.Width < textSize.Width + 6)
-            {
+            if (base.Width < textSize.Width + 6) {
                 base.Width = textSize.Width + 6;
             }
 
-            buttonX = (base.Width - textSize.Width)/2 - 1;
-            buttonY = (base.Height - textSize.Height)/2 - 1;
+            buttonX = (base.Width - textSize.Width) / 2 - 1;
+            buttonY = (base.Height - textSize.Height) / 2 - 1;
         }
 
         /// <summary>
@@ -250,12 +231,19 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <param name = "sender">The source of the event.</param>
         /// <param name = "e">The <see cref = "System.Windows.Forms.PaintEventArgs" /> instance containing the event data.</param>
-        private void ActiveButton_Paint(object sender, PaintEventArgs e)
-        {
-            using (SolidBrush brush = new SolidBrush(Color.FromKnownColor(KnownColor.ControlText)))
-            {
+        private void ActiveButton_Paint(object sender, PaintEventArgs e) {
+            using (SolidBrush brush = new SolidBrush(Color.FromKnownColor(KnownColor.ControlText))) {
                 e.Graphics.DrawString(Text, base.Font, brush, buttonX, buttonY);
             }
+        }
+
+        private void InitializeComponent() {
+            this.SuspendLayout();
+            // 
+            // ActiveButton
+            // 
+            this.ResumeLayout(false);
+
         }
     }
 }

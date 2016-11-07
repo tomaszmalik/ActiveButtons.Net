@@ -16,58 +16,39 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TheCodeKing.ActiveButtons.Controls.Themes
-{
-    internal class Aero : ThemeBase
-    {
+namespace TheCodeKing.ActiveButtons.Controls.Themes {
+    internal class Aero : ThemeBase {
         private Size maxFrameBorder = Size.Empty;
         private Size minFrameBorder = Size.Empty;
 
         public Aero(Form form)
-            : base(form)
-        {
+            : base(form) {
         }
 
-        public override Color BackColor
-        {
+        public override Color BackColor {
             get { return Color.Transparent; }
         }
 
-        public override Size ControlBoxSize
-        {
-            get
-            {
-                if (base.controlBoxSize == Size.Empty)
-                {
-                    if (IsToolbar)
-                    {
-                        if (form.ControlBox)
-                        {
+        public override Size ControlBoxSize {
+            get {
+                if (base.controlBoxSize == Size.Empty) {
+                    if (IsToolbar) {
+                        if (form.ControlBox) {
                             base.controlBoxSize = new Size(SystemButtonSize.Width, SystemButtonSize.Height);
-                        }
-                        else
-                        {
+                        } else {
                             base.controlBoxSize = new Size(1, 0);
                         }
-                    }
-                    else
-                    {
-                        if (!form.MaximizeBox && !form.MinimizeBox && form.ControlBox)
-                        {
-                            if (form.HelpButton)
-                            {
-                                base.controlBoxSize = new Size((2*SystemButtonSize.Width) + 7, SystemButtonSize.Height);
+                    } else {
+                        if (!form.MaximizeBox && !form.MinimizeBox && form.ControlBox) {
+                            if (form.HelpButton) {
+                                base.controlBoxSize = new Size((2 * SystemButtonSize.Width) + 7, SystemButtonSize.Height);
+                            } else {
+                                base.controlBoxSize = new Size((1 * SystemButtonSize.Width) + 13, SystemButtonSize.Height);
                             }
-                            else
-                            {
-                                base.controlBoxSize = new Size((1*SystemButtonSize.Width) + 13, SystemButtonSize.Height);
-                            }
-                        }
-                        else
-                        {
+                        } else {
                             int index;
                             index = (form.ControlBox) ? 3 : 0;
-                            base.controlBoxSize = new Size(index*SystemButtonSize.Width, SystemButtonSize.Height);
+                            base.controlBoxSize = new Size(index * SystemButtonSize.Width, SystemButtonSize.Height);
                         }
                     }
                 }
@@ -75,18 +56,12 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes
             }
         }
 
-        public override Point ButtonOffset
-        {
-            get
-            {
-                if (base.buttonOffset == Point.Empty)
-                {
-                    if (IsToolbar)
-                    {
+        public override Point ButtonOffset {
+            get {
+                if (base.buttonOffset == Point.Empty) {
+                    if (IsToolbar) {
                         base.buttonOffset = new Point(0, 0);
-                    }
-                    else
-                    {
+                    } else {
                         base.buttonOffset = new Point(0, -2);
                     }
                 }
@@ -94,56 +69,47 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes
             }
         }
 
-        public override Size FrameBorder
-        {
-            get
-            {
-                if (form.WindowState == FormWindowState.Maximized)
-                {
-                    if (maxFrameBorder == Size.Empty)
-                    {
-                        switch (form.FormBorderStyle)
-                        {
+        public override Size FrameBorder {
+            get {
+                if (form.WindowState == FormWindowState.Maximized) {
+                    if (maxFrameBorder == Size.Empty) {
+                        switch (form.FormBorderStyle) {
                             case FormBorderStyle.FixedToolWindow:
-                                maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 8, -1);
-                                break;
+                            maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 8, -1);
+                            break;
                             case FormBorderStyle.SizableToolWindow:
-                                maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 4);
-                                break;
+                            maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 4);
+                            break;
                             case FormBorderStyle.Sizable:
-                                maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width + 2, 7);
-                                break;
+                            maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width + 2, 7);
+                            break;
                             default:
-                                maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 2);
-                                break;
+                            maxFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 2);
+                            break;
                         }
                     }
                     return maxFrameBorder;
-                }
-                else
-                {
-                    if (minFrameBorder == Size.Empty)
-                    {
-                        switch (form.FormBorderStyle)
-                        {
+                } else {
+                    if (minFrameBorder == Size.Empty) {
+                        switch (form.FormBorderStyle) {
                             case FormBorderStyle.FixedToolWindow:
-                                minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 8, -1);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 8, -1);
+                            break;
                             case FormBorderStyle.SizableToolWindow:
-                                minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 4);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 4);
+                            break;
                             case FormBorderStyle.Sizable:
-                                minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 1);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.FrameBorderSize.Width - 3, 1);
+                            break;
                             case FormBorderStyle.Fixed3D:
-                                minFrameBorder = new Size(SystemInformation.Border3DSize.Width, -4);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.Border3DSize.Width, -4);
+                            break;
                             case FormBorderStyle.FixedSingle:
-                                minFrameBorder = new Size(SystemInformation.Border3DSize.Width - 2, -4);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.Border3DSize.Width - 2, -4);
+                            break;
                             default:
-                                minFrameBorder = new Size(SystemInformation.Border3DSize.Width - 1, -4);
-                                break;
+                            minFrameBorder = new Size(SystemInformation.Border3DSize.Width - 1, -4);
+                            break;
                         }
                     }
                     return minFrameBorder;
@@ -151,21 +117,15 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes
             }
         }
 
-        public override Size SystemButtonSize
-        {
-            get
-            {
-                if (base.systemButtonSize == Size.Empty)
-                {
-                    if (IsToolbar)
-                    {
+        public override Size SystemButtonSize {
+            get {
+                if (base.systemButtonSize == Size.Empty) {
+                    if (IsToolbar) {
                         Size size = SystemInformation.SmallCaptionButtonSize;
                         size.Height += 2;
                         size.Width += 2;
                         base.systemButtonSize = size;
-                    }
-                    else
-                    {
+                    } else {
                         Size size = SystemInformation.CaptionButtonSize;
                         size.Height += 1;
                         //size.Width -= 1;

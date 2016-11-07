@@ -21,13 +21,11 @@ using System.Windows.Forms;
 using TheCodeKing.ActiveButtons.Controls.Themes;
 using TheCodeKing.ActiveButtons.Utils;
 
-namespace TheCodeKing.ActiveButtons.Controls
-{
+namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
     /// 	The menu for handling the render of buttons over the title bar.
     /// </summary>
-    internal class ActiveMenuImpl : Form, IActiveMenu
-    {
+    internal class ActiveMenuImpl : Form, IActiveMenu {
         /// <summary>
         /// 	A internal hashtable of instances against form objects to 
         /// 	ensure only one instance is even created per form.
@@ -61,8 +59,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         private ITheme theme;
         private ToolTip tooltip;
 
-        static ActiveMenuImpl()
-        {
+        static ActiveMenuImpl() {
             parents = new Dictionary<Form, IActiveMenu>();
         }
 
@@ -71,8 +68,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	in order thay this may be displayed over the top of it's parent 
         /// 	form.
         /// </summary>
-        private ActiveMenuImpl(Form form)
-        {
+        private ActiveMenuImpl(Form form) {
             InitializeComponent();
             items = new ActiveItemsImpl();
             items.CollectionModified += ItemsCollectionModified;
@@ -99,14 +95,12 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	has been created. This sequence is important to ensure the child is attached
         /// 	and respects the z-ordering of the parent.
         /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
+        protected override CreateParams CreateParams {
+            get {
                 CreateParams p = base.CreateParams;
-                p.Style = (int) Win32.WS_CHILD;
-                p.Style |= (int) Win32.WS_CLIPSIBLINGS;
-                p.ExStyle &= (int) Win32.WS_EX_LAYERED;
+                p.Style = (int)Win32.WS_CHILD;
+                p.Style |= (int)Win32.WS_CLIPSIBLINGS;
+                p.ExStyle &= (int)Win32.WS_EX_LAYERED;
                 p.Parent = Win32.GetDesktopWindow();
                 return p;
             }
@@ -117,8 +111,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Gets the list of buttons for this menu instance.
         /// </summary>
-        public IActiveItems Items
-        {
+        public IActiveItems Items {
             get { return items; }
         }
 
@@ -126,8 +119,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Gets or sets the tool tip control used for rendering tool tips.
         /// </summary>
         /// <value>The tool tip settings.</value>
-        public ToolTip ToolTip
-        {
+        public ToolTip ToolTip {
             get { return tooltip ?? (tooltip = new ToolTip()); }
             set { tooltip = value; }
         }
@@ -137,10 +129,8 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form)
-        {
-            if (!parents.ContainsKey(form))
-            {
+        public static IActiveMenu GetInstance(Form form) {
+            if (!parents.ContainsKey(form)) {
                 parents.Add(form, new ActiveMenuImpl(form));
             }
             return parents[form];
@@ -150,8 +140,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Raises the <see cref = "E:System.Windows.Forms.Form.Load"></see> event.
         /// </summary>
         /// <param name = "e">An <see cref = "T:System.EventArgs"></see> that contains the event data.</param>
-        protected override void OnLoad(EventArgs e)
-        {
+        protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             base.BringToFront();
         }
@@ -161,11 +150,9 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <param name = "sender">The source of the event.</param>
         /// <param name = "e">The <see cref = "System.EventArgs" /> instance containing the event data.</param>
-        private void ItemsCollectionModified(object sender, ListModificationEventArgs e)
-        {
+        private void ItemsCollectionModified(object sender, ListModificationEventArgs e) {
             Controls.Clear();
-            foreach (ActiveButton button in Items)
-            {
+            foreach (ActiveButton button in Items) {
                 Controls.Add(button);
             }
             CalcSize();
@@ -175,15 +162,12 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Remove the parent from the hashtable when disposed.
         /// </summary>
-        private void ParentFormDisposed(object sender, EventArgs e)
-        {
-            var form = (Form) sender;
-            if (form == null)
-            {
+        private void ParentFormDisposed(object sender, EventArgs e) {
+            var form = (Form)sender;
+            if (form == null) {
                 return;
             }
-            if (parents.ContainsKey(form))
-            {
+            if (parents.ContainsKey(form)) {
                 parents.Remove(form);
             }
         }
@@ -192,8 +176,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Setup the handlers to reposition and resize the buttons when the parent
         /// 	is resized or styles are changed.
         /// </summary>
-        protected void AttachHandlers()
-        {
+        protected void AttachHandlers() {
             parentForm.Deactivate += ParentFormDeactivate;
             parentForm.Activated += ParentFormActivated;
             parentForm.SizeChanged += ParentRefresh;
@@ -201,13 +184,10 @@ namespace TheCodeKing.ActiveButtons.Controls
             parentForm.Move += ParentRefresh;
             parentForm.SystemColorsChanged += TitleButtonSystemColorsChanged;
             // used to mask the menu control behind the buttons.
-            if (Win32.DwmIsCompositionEnabled)
-            {
+            if (Win32.DwmIsCompositionEnabled) {
                 BackColor = Color.Fuchsia;
                 TransparencyKey = Color.Fuchsia;
-            }
-            else
-            {
+            } else {
                 BackColor = Color.FromKnownColor(KnownColor.ActiveCaption);
                 TransparencyKey = BackColor;
             }
@@ -218,8 +198,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <param name = "sender">The source of the event.</param>
         /// <param name = "e">The <see cref = "System.EventArgs" /> instance containing the event data.</param>
-        private void ParentFormDeactivate(object sender, EventArgs e)
-        {
+        private void ParentFormDeactivate(object sender, EventArgs e) {
             ToolTip.ShowAlways = false;
         }
 
@@ -229,16 +208,14 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// </summary>
         /// <param name = "sender">The source of the event.</param>
         /// <param name = "e">The <see cref = "System.EventArgs" /> instance containing the event data.</param>
-        private void ParentFormActivated(object sender, EventArgs e)
-        {
+        private void ParentFormActivated(object sender, EventArgs e) {
             ToolTip.ShowAlways = true;
         }
 
         /// <summary>
         /// 	When the style is changed we need to re-calc button sizes as well as positions.
         /// </summary>
-        private void TitleButtonSystemColorsChanged(object sender, EventArgs e)
-        {
+        private void TitleButtonSystemColorsChanged(object sender, EventArgs e) {
             theme = themeFactory.GetTheme();
             CalcSize();
             OnPosition();
@@ -248,12 +225,10 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Work out the buttons sizes based of sys diamensions. This doesn't work quite as expected
         /// 	as the buttons seem to have larger borders, which change per theme.
         /// </summary>
-        private void CalcSize()
-        {
+        private void CalcSize() {
             int left = 0;
-            for (int i = (Items.Count - 1); i >= 0; i--)
-            {
-                var button = (ThemedItem) Items[i];
+            for (int i = (Items.Count - 1); i >= 0; i--) {
+                var button = (ThemedItem)Items[i];
                 button.Theme = theme;
                 button.Left = left;
                 left += Items[i].Width + theme.ButtonOffset.X;
@@ -261,15 +236,13 @@ namespace TheCodeKing.ActiveButtons.Controls
             }
             containerMaxWidth = left;
 
-            if (spillOverMode == SpillOverMode.IncreaseSize)
-            {
+            if (spillOverMode == SpillOverMode.IncreaseSize) {
                 int w = containerMaxWidth + theme.ControlBoxSize.Width + theme.FrameBorder.Width +
                         theme.FrameBorder.Width;
 
                 parentForm.MinimumSize = originalMinSize;
 
-                if (parentForm.MinimumSize.Width <= w)
-                {
+                if (parentForm.MinimumSize.Width <= w) {
                     parentForm.MinimumSize = new Size(w, parentForm.MinimumSize.Height);
                 }
             }
@@ -278,15 +251,11 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Handle changes to the parent, and make sure the menu is aligned to match.
         /// </summary>
-        protected void ParentRefresh(object sender, EventArgs e)
-        {
-            if (parentForm.WindowState == FormWindowState.Minimized)
-            {
+        protected void ParentRefresh(object sender, EventArgs e) {
+            if (parentForm.WindowState == FormWindowState.Minimized) {
                 isActivated = false;
                 Visible = false;
-            }
-            else
-            {
+            } else {
                 isActivated = true;
                 OnPosition();
             }
@@ -295,12 +264,9 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// <summary>
         /// 	Position the menu into the correct location, this varies per theme.
         /// </summary>
-        private void OnPosition()
-        {
-            if (!IsDisposed)
-            {
-                if (theme == null || !theme.IsDisplayed)
-                {
+        private void OnPosition() {
+            if (!IsDisposed) {
+                if (theme == null || !theme.IsDisplayed) {
                     Visible = false;
                     return;
                 }
@@ -313,30 +279,20 @@ namespace TheCodeKing.ActiveButtons.Controls
 
                 Visible = theme.IsDisplayed && isActivated;
 
-                if (Visible)
-                {
-                    if (Items.Count > 0)
-                    {
+                if (Visible) {
+                    if (Items.Count > 0) {
                         Opacity = parentForm.Opacity;
-                        if (parentForm.Visible)
-                        {
+                        if (parentForm.Visible) {
                             Opacity = parentForm.Opacity;
-                        }
-                        else
-                        {
+                        } else {
                             Visible = false;
                         }
                     }
-                    if (spillOverMode == SpillOverMode.Hide)
-                    {
-                        foreach (ActiveButton b in Items)
-                        {
-                            if (b.Left + Left - theme.FrameBorder.Width + 2 < parentForm.Left)
-                            {
+                    if (spillOverMode == SpillOverMode.Hide) {
+                        foreach (ActiveButton b in Items) {
+                            if (b.Left + Left - theme.FrameBorder.Width + 2 < parentForm.Left) {
                                 b.Visible = false;
-                            }
-                            else
-                            {
+                            } else {
                                 b.Visible = true;
                             }
                         }
@@ -349,10 +305,8 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	Clean up any resources being used.
         /// </summary>
         /// <param name = "disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -363,8 +317,7 @@ namespace TheCodeKing.ActiveButtons.Controls
         /// 	can effect the ability to attach to a parent, and leave the menu flaoting on the
         /// 	desktop.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             SuspendLayout();
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
