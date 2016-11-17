@@ -15,31 +15,43 @@
 *=============================================================================
 */
 using System.Windows.Forms;
+using TheCodeKing.ActiveButtons.Controls.Enums;
 using TheCodeKing.ActiveButtons.Utils;
 
 namespace TheCodeKing.ActiveButtons.Controls.Themes {
     internal class ThemeFactory {
-        private readonly Form form;
+        private readonly Form _form;
+        private readonly CustomThemes? _customTheme;
 
-        public ThemeFactory(Form form) {
-            this.form = form;
+        public ThemeFactory(Form form, CustomThemes? customTheme = null) {
+            this._form = form;
+
+            if (customTheme != null && customTheme == CustomThemes.Netspeed) {
+                this._customTheme = customTheme;
+            }
         }
 
         public ITheme GetTheme() {
+            if (_customTheme != null) {
+                if (_customTheme == CustomThemes.Netspeed) {
+                    return new Netspeed(_form);
+                }
+            }
+
             if (Win32.DwmIsCompositionEnabled && (Win32.version == 6 && Win32.versionMinor == 2)) {
                 // vista
-                return new Windows8(form);
+                return new Windows8(_form);
             } else if (Win32.DwmIsCompositionEnabled) {
                 // vista
-                return new Aero(form);
+                return new Aero(_form);
             } else if (Application.RenderWithVisualStyles && Win32.version > 6) {
                 // vista basic
-                return new Styled(form);
+                return new Styled(_form);
             } else if (Application.RenderWithVisualStyles) {
                 // xp
-                return new XPStyle(form);
+                return new XPStyle(_form);
             } else {
-                return new Standard(form);
+                return new Standard(_form);
             }
         }
     }

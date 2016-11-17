@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using TheCodeKing.ActiveButtons.Controls.Enums;
 using TheCodeKing.ActiveButtons.Controls.Themes;
 using TheCodeKing.ActiveButtons.Utils;
 
@@ -68,7 +69,7 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// 	in order thay this may be displayed over the top of it's parent 
         /// 	form.
         /// </summary>
-        private ActiveMenuImpl(Form form) {
+        private ActiveMenuImpl(Form form, CustomThemes? customTheme = null) {
             InitializeComponent();
             items = new ActiveItemsImpl();
             items.CollectionModified += ItemsCollectionModified;
@@ -77,7 +78,7 @@ namespace TheCodeKing.ActiveButtons.Controls {
             parentForm.Disposed += ParentFormDisposed;
             Visible = false;
             isActivated = form.WindowState != FormWindowState.Minimized;
-            themeFactory = new ThemeFactory(form);
+            themeFactory = new ThemeFactory(form, customTheme);
             theme = themeFactory.GetTheme();
             originalMinSize = form.MinimumSize;
             AttachHandlers();
@@ -129,9 +130,9 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form) {
+        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null) {
             if (!parents.ContainsKey(form)) {
-                parents.Add(form, new ActiveMenuImpl(form));
+                parents.Add(form, new ActiveMenuImpl(form, customTheme));
             }
             return parents[form];
         }

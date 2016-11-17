@@ -14,6 +14,7 @@
 *=============================================================================
 */
 using System.Windows.Forms;
+using TheCodeKing.ActiveButtons.Controls.Enums;
 
 namespace TheCodeKing.ActiveButtons.Controls {
     /// <summary>
@@ -41,8 +42,8 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form) {
-            return ActiveMenuImpl.GetInstance(form);
+        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null) {
+            return ActiveMenuImpl.GetInstance(form, customTheme);
         }
     }
 }

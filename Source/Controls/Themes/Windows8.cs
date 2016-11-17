@@ -12,12 +12,12 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
                 //if (base.systemButtonSize == Size.Empty) {
                     if (IsToolbar) {
                         Size size = SystemInformation.SmallCaptionButtonSize;
-                        size.Height += Maximized ? 3 : 9;
+                        size.Height += base.Maximized ? 3 : 9;
                         size.Width = 36;
                         base.systemButtonSize = size;
                     } else {
                         Size size = SystemInformation.CaptionButtonSize;
-                        size.Height += Maximized ? 3 : 9;
+                        size.Height += base.Maximized ? 3 : 9;
                         size.Width = 48;
                         base.systemButtonSize = size;
                     }
@@ -29,16 +29,6 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
         public override bool ForceFlat {
             get {
                 return true;
-            }
-        }
-
-        public override bool Maximized {
-            get {
-                return base.Maximized;
-            }
-
-            set {
-                base.Maximized = value;
             }
         }
     }
