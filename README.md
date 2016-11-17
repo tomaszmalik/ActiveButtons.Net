@@ -1,6 +1,6 @@
 ActiveButtons is a .Net code library which allows developers to very quickly and easily add additional buttons to the Windows title bar along-side the standard maximise, minimise and close buttons.
 
-### Supported Platforms
+## Supported Platforms
 Windows 7 (including Aero)
 
 Windows Vista (including Aero)
