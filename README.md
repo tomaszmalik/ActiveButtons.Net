@@ -9,8 +9,6 @@ Windows XP
 
 Windows 2000
 
------
-
 ```CSHARP
 //Code sample
 IActiveMenu menu = ActiveMenu.GetInstance(form);
