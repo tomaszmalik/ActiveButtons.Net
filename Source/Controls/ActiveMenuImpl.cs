@@ -60,6 +60,9 @@ namespace TheCodeKing.ActiveButtons.Controls {
         private ITheme theme;
         private ToolTip tooltip;
 
+        private int _leftAjust;
+        private int _topAjust;
+
         static ActiveMenuImpl() {
             parents = new Dictionary<Form, IActiveMenu>();
         }
@@ -69,7 +72,7 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// 	in order thay this may be displayed over the top of it's parent 
         /// 	form.
         /// </summary>
-        private ActiveMenuImpl(Form form, CustomThemes? customTheme = null) {
+        private ActiveMenuImpl(Form form, CustomThemes? customTheme = null, int leftAjust = 0, int topAjust = 0) {
             InitializeComponent();
             items = new ActiveItemsImpl();
             items.CollectionModified += ItemsCollectionModified;
@@ -86,6 +89,9 @@ namespace TheCodeKing.ActiveButtons.Controls {
             TopMost = form.TopMost;
             TopMost = false;
             spillOverMode = SpillOverMode.IncreaseSize;
+
+            _leftAjust = leftAjust;
+            _topAjust = topAjust;
         }
 
         /// <summary>
@@ -130,9 +136,9 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null) {
+        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null, int leftAjust = 0, int topAjust = 0) {
             if (!parents.ContainsKey(form)) {
-                parents.Add(form, new ActiveMenuImpl(form, customTheme));
+                parents.Add(form, new ActiveMenuImpl(form, customTheme, leftAjust, topAjust));
             }
             return parents[form];
         }
@@ -232,8 +238,8 @@ namespace TheCodeKing.ActiveButtons.Controls {
                 var button = (ThemedItem)Items[i];
                 button.Theme = theme;
                 button.Left = left;
-                left += Items[i].Width + theme.ButtonOffset.X;
-                button.Top = theme.ButtonOffset.Y;
+                left += Items[i].Width + theme.ButtonOffset.X + (_leftAjust * -1);
+                button.Top = theme.ButtonOffset.Y + _topAjust;
             }
             containerMaxWidth = left;
 

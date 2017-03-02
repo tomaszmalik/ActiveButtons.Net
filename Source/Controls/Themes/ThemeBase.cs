@@ -54,7 +54,7 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
         }
 
 
-        public bool IsDisplayed {
+        public virtual bool IsDisplayed {
             get {
                 if (isDisplayed == null) {
                     if ((!form.ControlBox && string.IsNullOrEmpty(form.Text))

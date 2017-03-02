@@ -42,8 +42,8 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// <summary>
         /// 	Creates or returns the menu instance for a given form.
         /// </summary>
-        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null) {
-            return ActiveMenuImpl.GetInstance(form, customTheme);
+        public static IActiveMenu GetInstance(Form form, CustomThemes? customTheme = null, int leftAjust = 0, int topAjust = 0) {
+            return ActiveMenuImpl.GetInstance(form, customTheme, leftAjust, topAjust);
         }
     }
 }

@@ -207,7 +207,7 @@ namespace TheCodeKing.ActiveButtons.Controls {
         /// <summary>
         /// 	Calculates the size of the button.
         /// </summary>
-        public void CalcButtonSize(bool maximized = false, int topAjust = 0, int leftAjust = 0) {
+        public void CalcButtonSize(bool maximized = false) {
             if (theme != null) {
                 theme.Maximized = maximized;
 
@@ -241,9 +241,6 @@ namespace TheCodeKing.ActiveButtons.Controls {
 
             buttonX = (base.Width - textSize.Width) / 2 - 1;
             buttonY = (base.Height - textSize.Height) / 2 - 1;
-
-            base.Left += leftAjust;
-            base.Top += topAjust;
         }
 
         /// <summary>

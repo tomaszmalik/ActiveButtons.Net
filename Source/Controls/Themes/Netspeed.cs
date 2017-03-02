@@ -7,6 +7,19 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
             : base(form) {
         }
 
+        public override bool IsDisplayed {
+            get {
+                if (isDisplayed == null) {
+                    if ((!form.ControlBox && string.IsNullOrEmpty(form.Text))) {
+                        isDisplayed = false;
+                    } else {
+                        isDisplayed = true;
+                    }
+                }
+                return (bool)isDisplayed;
+            }
+        }
+
         public override Size SystemButtonSize {
             get {
                 if (IsToolbar) {
