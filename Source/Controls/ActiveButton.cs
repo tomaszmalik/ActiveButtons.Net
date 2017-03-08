@@ -224,6 +224,8 @@ namespace TheCodeKing.ActiveButtons.Controls {
                 if (theme.ForceFlat) {
                     base.FlatStyle = FlatStyle.Flat;
                     base.FlatAppearance.BorderSize = 0;
+
+                    buttonSize.Height -= 6;
                 }
             } else {
                 buttonSize = SystemInformation.CaptionButtonSize;

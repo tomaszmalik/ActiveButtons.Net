@@ -2,8 +2,8 @@
 using System.Windows.Forms;
 
 namespace TheCodeKing.ActiveButtons.Controls.Themes {
-    internal class Windows8 : Aero {
-        public Windows8(Form form)
+    internal class Windows10 : Aero {
+        public Windows10(Form form)
             : base(form) {
         }
 
@@ -16,7 +16,7 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
                     base.systemButtonSize = size;
                 } else {
                     Size size = SystemInformation.CaptionButtonSize;
-                    size.Height += base.Maximized ? 0 : 6;
+                    size.Height += base.Maximized ? 6 : 13;
                     size.Width = 48;
                     base.systemButtonSize = size;
                 }
@@ -28,9 +28,9 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
             get {
                 if (base.buttonOffset == Point.Empty) {
                     if (IsToolbar) {
-                        base.buttonOffset = new Point(0, 0);
+                        base.buttonOffset = new Point(0, 4);
                     } else {
-                        base.buttonOffset = new Point(0, 0);
+                        base.buttonOffset = new Point(-1, 5);
                     }
                 }
 

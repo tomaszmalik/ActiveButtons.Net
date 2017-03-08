@@ -59,6 +59,8 @@
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -81,6 +83,7 @@
     <Compile Include="Controls\ThemedItem.cs" />
     <Compile Include="Controls\Themes\Aero.cs" />
     <Compile Include="Controls\Themes\Netspeed.cs" />
+    <Compile Include="Controls\Themes\Windows10.cs" />
     <Compile Include="Controls\Themes\Windows8.cs" />
     <Compile Include="Controls\Themes\XPStyle.cs" />
     <Compile Include="Controls\Themes\ITheme.cs" />
@@ -141,7 +144,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Reactor_Output="C:\Users\Mike\Subversion\TitleButtons\trunk\source\Lib\ActiveButtons.dll" Reactor_Project="C:\Users\Mike\Subversion\TitleButtons\trunk\source\ActiveButtons\lock.nrproj" Reactor_Commands="" Reactor_Automatic="0" Reactor_Lib="1" Reactor_Enabled="1" />
+      <UserProperties Reactor_Enabled="1" Reactor_Lib="1" Reactor_Automatic="0" Reactor_Commands="" Reactor_Project="C:\Users\Mike\Subversion\TitleButtons\trunk\source\ActiveButtons\lock.nrproj" Reactor_Output="C:\Users\Mike\Subversion\TitleButtons\trunk\source\Lib\ActiveButtons.dll" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
