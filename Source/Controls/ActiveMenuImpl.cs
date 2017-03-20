@@ -90,8 +90,10 @@ namespace TheCodeKing.ActiveButtons.Controls {
             TopMost = false;
             spillOverMode = SpillOverMode.IncreaseSize;
 
-            _leftAjust = leftAjust;
-            _topAjust = topAjust;
+            //if (theme.ForceFlat) {
+            //    _leftAjust = leftAjust;
+            //    _topAjust = topAjust;
+            //}
         }
 
         /// <summary>

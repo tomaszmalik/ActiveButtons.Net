@@ -28,9 +28,9 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
             get {
                 if (base.buttonOffset == Point.Empty) {
                     if (IsToolbar) {
-                        base.buttonOffset = new Point(0, 0);
+                        base.buttonOffset = new Point(-40, 0);
                     } else {
-                        base.buttonOffset = new Point(0, 0);
+                        base.buttonOffset = new Point(-40, 0);
                     }
                 }
 

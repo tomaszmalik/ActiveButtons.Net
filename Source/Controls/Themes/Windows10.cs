@@ -30,7 +30,7 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
                     if (IsToolbar) {
                         base.buttonOffset = new Point(0, 4);
                     } else {
-                        base.buttonOffset = new Point(-1, 5);
+                        base.buttonOffset = new Point(1, 5);
                     }
                 }
 

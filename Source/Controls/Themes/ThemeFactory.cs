@@ -34,7 +34,7 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
         public ITheme GetTheme() {
             var isWin10 = Win32.version == 10;
 
-            if(!isWin10) {
+            if (!isWin10) {
                 try {
                     isWin10 = (Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentMajorVersionNumber", null).ToString() == "10");
                 } catch (System.Exception) {
@@ -44,10 +44,10 @@ namespace TheCodeKing.ActiveButtons.Controls.Themes {
 
             if (_customTheme != null && _customTheme == CustomThemes.Netspeed) {
                 return new Netspeed(_form);
-            } else if(Win32.DwmIsCompositionEnabled && isWin10) {
+            } else if (Win32.DwmIsCompositionEnabled && isWin10) {
                 // Windows 10
                 return new Windows10(_form);
-            } else if (Win32.DwmIsCompositionEnabled && (Win32.version == 6 && Win32.versionMinor == 2)) {
+            } else if (Win32.DwmIsCompositionEnabled && (Win32.version == 6 && Win32.versionMinor >= 2)) {
                 // Windows 8
                 return new Windows8(_form);
             } else if (Win32.DwmIsCompositionEnabled) {
