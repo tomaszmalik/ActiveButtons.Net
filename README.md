@@ -2,7 +2,7 @@ ActiveButtons is a .Net library which allows developers to very quickly and easi
 
 ## Example
 ```csharp
-IActiveMenu menu = ActiveMenu.GetInstance(form);
+var menu = ActiveMenu.GetInstance(form);
 
 var button = menu.Items.CreateItem();
 button.Text = "One";
