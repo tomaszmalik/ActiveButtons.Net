@@ -1,16 +1,19 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
 [assembly: AssemblyTitle("ActiveButtons")]
-[assembly: AssemblyDescription("www.thecodeking.co.uk")]
+[assembly: AssemblyDescription("First author: Michael Carlisle. More info at www.thecodeking.co.uk")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Michael Carlisle")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ActiveButtons")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
+[assembly: AssemblyCopyright("Copyright © 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +35,5 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]

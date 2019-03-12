@@ -10,28 +10,24 @@
 *
 *-----------------------------------------------------------------------------
 *   History:
-*       17/09/2007  Michael Carlisle                Version 1.0
+*       01/09/2007  Michael Carlisle                Version 1.0
 *=============================================================================
 */
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
-namespace ActiveDemo
+namespace ActiveButtons
 {
-    internal static class Program
+    /// <summary>
+    ///     A list of buttons to be rendered in the ActiveButton's menu.
+    /// </summary>
+    public interface IActiveButtonCollection : IList<IActiveButton>
     {
-        /// <summary>
-        ///     The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActiveDemo());
-        }
+        IActiveButton CreateItem();
+        IActiveButton CreateItem(string text, EventHandler click);
+
+        IActiveButton Add(string text, EventHandler click);
     }
 }

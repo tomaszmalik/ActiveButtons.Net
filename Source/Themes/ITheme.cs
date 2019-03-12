@@ -10,28 +10,33 @@
 *
 *-----------------------------------------------------------------------------
 *   History:
-*       17/09/2007  Michael Carlisle                Version 1.0
+*       01/09/2007  Michael Carlisle                Version 1.0
 *=============================================================================
 */
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
-namespace ActiveDemo
+namespace ActiveButtons.Themes
 {
-    internal static class Program
+    internal interface ITheme
     {
-        /// <summary>
-        ///     The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActiveDemo());
-        }
+        Color BackColor { get; }
+
+        Point ButtonOffset { get; }
+
+        Size ControlBoxSize { get; }
+
+        bool ForceFlat { get; }
+
+        Size FrameBorder { get; }
+
+        bool IsDisplayed { get; }
+
+        bool Maximized { get; set; }
+
+        Size SystemButtonSize { get; }
     }
 }

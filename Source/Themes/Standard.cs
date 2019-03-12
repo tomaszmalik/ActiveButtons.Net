@@ -10,7 +10,7 @@
 *
 *-----------------------------------------------------------------------------
 *   History:
-*       17/09/2007  Michael Carlisle                Version 1.0
+*       01/09/2007  Michael Carlisle                Version 1.0
 *=============================================================================
 */
 using System;
@@ -19,19 +19,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ActiveDemo
+namespace ActiveButtons.Themes
 {
-    internal static class Program
+    internal class Standard : ThemeBase
     {
-        /// <summary>
-        ///     The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActiveDemo());
-        }
+        public Standard(Form form)
+            : base(form)
+        { }
     }
 }

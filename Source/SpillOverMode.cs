@@ -10,28 +10,29 @@
 *
 *-----------------------------------------------------------------------------
 *   History:
-*       17/09/2007  Michael Carlisle                Version 1.0
+*       01/09/2007  Michael Carlisle                Version 1.0
 *=============================================================================
 */
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
-namespace ActiveDemo
+namespace ActiveButtons
 {
-    internal static class Program
+    /// <summary>
+    ///     Determines the behaviour of the <see cref="T:ActiveButton"></see>
+    ///     items when they spill over the edge of the title bar.
+    /// </summary>
+    internal enum SpillOverMode
     {
         /// <summary>
-        ///     The main entry point for the application.
+        ///     Hide <see cref="T:ActiveButton"></see> instances.
         /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActiveDemo());
-        }
+        Hide,
+        /// <summary>
+        ///     Increase the minimum size of the parent form to compensate.
+        /// </summary>
+        IncreaseSize
     }
 }
