@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using ActiveButtons.Themes;
 using ActiveButtons.Utils;
@@ -244,7 +245,7 @@ namespace ActiveButtons
         /// </summary>
         private void ParentRefresh(object sender, EventArgs e)
         {
-            if (_parentForm.WindowState == FormWindowState.Minimized)
+            if (_parentForm.WindowState == FormWindowState.Minimized || !_parentForm.Visible)
             {
                 _isActivated = false;
                 Visible = false;

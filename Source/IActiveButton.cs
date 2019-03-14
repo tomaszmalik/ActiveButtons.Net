@@ -29,6 +29,8 @@ namespace ActiveButtons
         event EventHandler Click;
 
         bool Enabled { get; set; }
+        object Tag { get; set; }
+        string Name { get; set; }
 
         /// <summary>
         /// Gets or sets button text.

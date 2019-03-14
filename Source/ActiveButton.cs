@@ -226,7 +226,7 @@ namespace ActiveButtons
                 if (text?.Length > 23)
                     text = text.Substring(0, 20) + "...";
 
-                //e.Graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
                 e.Graphics.DrawString(text, Font, brush, ClientRectangle, sf);
             }
         }
