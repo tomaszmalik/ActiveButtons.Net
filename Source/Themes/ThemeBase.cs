@@ -60,6 +60,7 @@ namespace ActiveButtons.Themes
         }
 
         public virtual Point ButtonOffset => buttonOffset;
+        public virtual Point ImageOffset => Point.Empty;
         public virtual Size ControlBoxSize
         {
             get

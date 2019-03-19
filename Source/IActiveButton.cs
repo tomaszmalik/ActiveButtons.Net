@@ -32,6 +32,11 @@ namespace ActiveButtons
         string Name { get; set; }
 
         /// <summary>
+        ///     Gets or sets the image of the button.
+        /// </summary>
+        Image Image { get; set; }
+
+        /// <summary>
         ///     Gets or sets button text.
         /// </summary>
         string Text { get; set; }

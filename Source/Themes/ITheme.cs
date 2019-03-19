@@ -12,6 +12,8 @@ namespace ActiveButtons.Themes
 
         Point ButtonOffset { get; }
 
+        Point ImageOffset { get; }
+
         Size ControlBoxSize { get; }
 
         bool ForceFlat { get; }
@@ -23,5 +25,6 @@ namespace ActiveButtons.Themes
         bool Maximized { get; set; }
 
         Size SystemButtonSize { get; }
+
     }
 }

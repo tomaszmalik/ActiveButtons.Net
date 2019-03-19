@@ -26,6 +26,7 @@ namespace ActiveButtons.Themes
                 return buttonOffset;
             }
         }
+        public override Point ImageOffset => new Point(0, -2);
         public override Size SystemButtonSize
         {
             get

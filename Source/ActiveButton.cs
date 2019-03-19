@@ -74,6 +74,14 @@ namespace ActiveButtons
                 if (theme != value)
                 {
                     theme = value;
+
+                    var offset = value?.ImageOffset ?? Point.Empty;
+                    Padding = new Padding(
+                        offset.X > 0 ? offset.X : 0,
+                        offset.Y > 0 ? offset.Y : 0,
+                        offset.X < 0 ? -offset.X : 0,
+                        offset.Y < 0 ? -offset.Y : 0);
+
                     CalcButtonSize();
                 }
             }
@@ -173,20 +181,23 @@ namespace ActiveButtons
         {
             base.OnPaint(e);
 
-            var color = Enabled ? ForeColor : ForeColor.Lerp(Color.White, 0.40f);
-
-            using (var sf = StringFormat.GenericTypographic)
-            using (var brush = new SolidBrush(color))
+            if (Image == null)
             {
-                sf.LineAlignment = StringAlignment.Center;
-                sf.Alignment = StringAlignment.Center;
+                var color = Enabled ? ForeColor : ForeColor.Lerp(Color.White, 0.40f);
 
-                var text = Text;
-                if (text?.Length > 23)
-                    text = text.Substring(0, 20) + "...";
+                using (var sf = StringFormat.GenericTypographic)
+                using (var brush = new SolidBrush(color))
+                {
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
 
-                e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-                e.Graphics.DrawString(text, Font, brush, ClientRectangle, sf);
+                    var text = Text;
+                    if (text?.Length > 23)
+                        text = text.Substring(0, 20) + "...";
+
+                    e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+                    e.Graphics.DrawString(text, Font, brush, ClientRectangle, sf);
+                }
             }
         }
     }
