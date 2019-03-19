@@ -11,10 +11,10 @@ namespace ActiveButtons.Utils
         public static Color ChangeLightness(this Color color, float lightness)
         {
             return Color.FromArgb(
-                (byte)255,
-                (byte)(Math.Max(0, Math.Min(color.R * lightness, 255))),
-                (byte)(Math.Max(0, Math.Min(color.G * lightness, 255))),
-                (byte)(Math.Max(0, Math.Min(color.B * lightness, 255))));
+                255,
+                (byte)Math.Max(0, Math.Min(color.R * lightness, 255)),
+                (byte)Math.Max(0, Math.Min(color.G * lightness, 255)),
+                (byte)Math.Max(0, Math.Min(color.B * lightness, 255)));
         }
         public static Color Lerp(this Color color, Color to, float amount)
         {

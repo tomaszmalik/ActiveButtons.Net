@@ -13,23 +13,23 @@ namespace ActiveButtons.Utils
 
         internal IList<T> m_list;
 
-        public virtual bool IsReadOnly { get { return false; } }
-        public int Count { get { return m_list.Count; } }
+        public virtual bool IsReadOnly => false;
+        public int Count => m_list.Count;
 
         public virtual bool AllowNew
         {
             get
             {
                 var type = typeof(T);
-                return type.IsValueType || (!type.IsAbstract && !type.IsInterface && type.GetConstructor(Type.EmptyTypes) != null);
+                return type.IsValueType || !type.IsAbstract && !type.IsInterface && type.GetConstructor(Type.EmptyTypes) != null;
             }
         }
-        public virtual bool AllowEdit { get { return !IsReadOnly; } }
-        public virtual bool AllowRemove { get { return !IsReadOnly; } }
+        public virtual bool AllowEdit => !IsReadOnly;
+        public virtual bool AllowRemove => !IsReadOnly;
 
         public T this[int index]
         {
-            get { return m_list[index]; }
+            get => m_list[index];
             set
             {
                 ThrowIfNull(value, "value");
@@ -208,21 +208,41 @@ namespace ActiveButtons.Utils
             return item;
         }
 
-        protected virtual void OnValidate(T value) { }
+        protected virtual void OnValidate(T value)
+        {
+        }
 
-        protected virtual void OnSet(int index, T oldValue, T newValue) { }
-        protected virtual void OnSetComplete(int index, T oldValue, T newValue) { }
+        protected virtual void OnSet(int index, T oldValue, T newValue)
+        {
+        }
+        protected virtual void OnSetComplete(int index, T oldValue, T newValue)
+        {
+        }
 
-        protected virtual void OnInsert(int index, T value) { }
-        protected virtual void OnInsertComplete(int index, T value) { }
+        protected virtual void OnInsert(int index, T value)
+        {
+        }
+        protected virtual void OnInsertComplete(int index, T value)
+        {
+        }
 
-        protected virtual void OnRemove(int index, T value) { }
-        protected virtual void OnRemoveComplete(int index, T value) { }
+        protected virtual void OnRemove(int index, T value)
+        {
+        }
+        protected virtual void OnRemoveComplete(int index, T value)
+        {
+        }
 
-        protected virtual void OnClear() { }
-        protected virtual void OnClearComplete() { }
+        protected virtual void OnClear()
+        {
+        }
+        protected virtual void OnClearComplete()
+        {
+        }
 
-        protected virtual void OnListChanged() { }
+        protected virtual void OnListChanged()
+        {
+        }
 
         #region Checks
 
@@ -251,14 +271,14 @@ namespace ActiveButtons.Utils
 
         #region IList
 
-        bool ICollection.IsSynchronized { get { return false; } }
-        object ICollection.SyncRoot { get { return ((ICollection)m_list).SyncRoot; } }
-        bool IList.IsFixedSize { get { return IsReadOnly; } }
+        bool ICollection.IsSynchronized => false;
+        object ICollection.SyncRoot => ((ICollection)m_list).SyncRoot;
+        bool IList.IsFixedSize => IsReadOnly;
 
         object IList.this[int index]
         {
-            get { return this[index]; }
-            set { this[index] = (T)value; }
+            get => this[index];
+            set => this[index] = (T)value;
         }
 
 

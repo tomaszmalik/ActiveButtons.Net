@@ -49,9 +49,6 @@ namespace ActiveButtons.Themes
             }
         }
 
-        public Windows10(Form form)
-            : base(form)
-        {
-        }
+        public Windows10(Form form) : base(form) { }
     }
 }

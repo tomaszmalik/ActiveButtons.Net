@@ -49,9 +49,6 @@ namespace ActiveButtons.Themes
             }
         }
 
-        public Windows8(Form form)
-            : base(form)
-        {
-        }
+        public Windows8(Form form) : base(form) { }
     }
 }

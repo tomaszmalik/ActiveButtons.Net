@@ -1,19 +1,4 @@
-﻿/*=============================================================================
-*
-*   (C) Copyright 2011, Michael Carlisle (mike.carlisle@thecodeking.co.uk)
-*
-*   http://www.TheCodeKing.co.uk
-*  
-*   All rights reserved.
-*   The code and information is provided "as-is" without waranty of any kind,
-*   either expresed or implied.
-*
-*-----------------------------------------------------------------------------
-*   History:
-*       01/09/2007  Michael Carlisle                Version 1.0
-*=============================================================================
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,21 +13,21 @@ namespace ActiveButtons
     ///     This sample shows how to add &amp; remove buttons form the IActiveMenu
     ///     using the Items list.
     ///     <code>
-    ///         // get an instance of the menu for the current form
-    ///         IActiveMenu menu = ActiveMenu.GetInstance(this);
+    ///     // get an instance of the menu for the current form
+    ///     IActiveMenu menu = ActiveMenu.GetInstance(this);
     /// 
-    ///         // add button to front the menu
-    ///         menu.Items.Add(button);
+    ///     // add button to front the menu
+    ///     menu.Items.Add(button);
     /// 
-    ///         // insert button at position 2
-    ///         menu.Items.Insert(2, button);
+    ///     // insert button at position 2
+    ///     menu.Items.Insert(2, button);
     /// 
-    ///         // remove specific button
-    ///         menu.Remove(button);
+    ///     // remove specific button
+    ///     menu.Remove(button);
     /// 
-    ///         // remove button at position 2
-    ///         menu.RemoveAt(2);
-    ///     </code>
+    ///     // remove button at position 2
+    ///     menu.RemoveAt(2);
+    /// </code>
     /// </example>
     public interface IActiveMenu
     {

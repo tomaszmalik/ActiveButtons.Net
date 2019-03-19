@@ -1,24 +1,8 @@
-﻿/*=============================================================================
-*
-*   (C) Copyright 2011, Michael Carlisle (mike.carlisle@thecodeking.co.uk)
-*
-*   http://www.TheCodeKing.co.uk
-*  
-*   All rights reserved.
-*   The code and information is provided "as-is" without waranty of any kind,
-*   either expresed or implied.
-*
-*-----------------------------------------------------------------------------
-*   History:
-*       01/09/2007  Michael Carlisle                Version 1.0
-*=============================================================================
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using ActiveButtons.Themes;
 using ActiveButtons.Utils;
@@ -351,8 +335,8 @@ namespace ActiveButtons
                 var left = _theme.FrameBorder.Width + _theme.ControlBoxSize.Width;
 
                 Location = new Point(
-                 _parentForm.Left + _parentForm.Width - _containerMaxWidth - left,
-                 top + _parentForm.Top);
+                    _parentForm.Left + _parentForm.Width - _containerMaxWidth - left,
+                    top + _parentForm.Top);
                 Visible = _theme.IsDisplayed && _isActivated;
 
                 if (Visible)

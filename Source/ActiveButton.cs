@@ -1,19 +1,5 @@
-﻿/*=============================================================================
-*
-*   (C) Copyright 2011, Michael Carlisle (mike.carlisle@thecodeking.co.uk)
-*
-*   http://www.TheCodeKing.co.uk
-*  
-*   All rights reserved.
-*   The code and information is provided "as-is" without waranty of any kind,
-*   either expresed or implied.
-*
-*-----------------------------------------------------------------------------
-*   History:
-*       01/09/2007  Michael Carlisle                Version 1.0
-*=============================================================================
-*/
-using System;
+﻿using System;
+using ActiveButtons.Utils;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -21,37 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ActiveButtons.Themes;
-using ActiveButtons.Utils;
 
 namespace ActiveButtons
 {
-    /// <summary>
-    ///     An instance of a button which can be added to the
-    ///     ActiveButtons menu.
-    /// </summary>
-    /// <example>
-    ///     The ActiveButton class can be used to create new
-    ///     button instances, which can be added to the current IActiveMenu. The
-    ///     Height and Width properties of the button class are auto-configured
-    ///     based on the current platform and theme.
-    ///     <code>
-    ///         // get an instance of the menu for the current form
-    ///         IActiveMenu menu = ActiveMenu.GetInstance(this);
-    /// 
-    ///         // create a new instance of ActiveButton
-    ///         ActiveButton button = new ActiveButton();
-    /// 
-    ///         // set the button properties
-    ///         button.Text = "One";
-    ///         button.BackColor = Color.Red;
-    /// 
-    ///         // attach button event handlers
-    ///         button.Click += new EventHandler(button_Click);
-    /// 
-    ///         // add the button to the title bar menu
-    ///         menu.Items.Add(button);
-    ///     </code>
-    /// </example>
     internal class ActiveButton : Button, IActiveButton
     {
         private Size buttonSize;
@@ -127,6 +85,7 @@ namespace ActiveButtons
         public ActiveButton()
         {
             Initialize();
+            ImageAlign = ContentAlignment.MiddleCenter;
         }
 
 
